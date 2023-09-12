@@ -11,6 +11,7 @@ class AppModule extends Module {
     i
       ..addLazySingleton(() => Dio())
       ..addLazySingleton<IHttpClient>(HttpClient.new);
+    IdeasModule().binds(i);
   }
 
   @override

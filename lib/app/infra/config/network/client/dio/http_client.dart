@@ -1,20 +1,24 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../http_client_interface.dart';
+import '../../../../infra.dart';
 
 class HttpClient implements IHttpClient {
   final Dio _dio;
 
   HttpClient(this._dio) {
     _dio.options = BaseOptions(
-      baseUrl: '',
-      connectTimeout: const Duration(seconds: 10),
+      baseUrl: AppConstants.baseUrl,
+      connectTimeout: const Duration(milliseconds: AppConstants.connectTimeout),
+      receiveTimeout: const Duration(milliseconds: AppConstants.receiveTimeout),
       headers: {
         'Content-Type': 'application/json',
       },
     );
+
+    _dio.interceptors.add(PrettyDioLogger());
   }
 
   @override

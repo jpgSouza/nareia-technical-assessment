@@ -53,6 +53,7 @@ class _IdeasPageState extends State<IdeasPage> {
   @override
   void dispose() {
     _pageController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 

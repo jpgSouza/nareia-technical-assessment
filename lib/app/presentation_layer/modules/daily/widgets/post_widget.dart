@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
@@ -24,6 +25,7 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -48,17 +50,61 @@ class PostWidget extends StatelessWidget {
               ideas.userNickname,
               style: const TextStyle(fontWeight: FontWeight.w700),
             ),
+            if (ideas.verified) ...[
+              const SizedBox(
+                width: 4.0,
+              ),
+              const Icon(
+                Icons.verified,
+                size: 18.0,
+                color: Color(0xFF458eff),
+              ),
+            ],
           ],
         ),
         const SizedBox(height: 16.0),
-        Container(
-          height: 400.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
+        Stack(
+          children: [
+            CachedNetworkImage(
+              height: 400.0,
+              imageUrl: ideas.imageUrl,
               fit: BoxFit.cover,
-              image: Image.network(ideas.imageUrl).image,
             ),
-          ),
+            Positioned(
+              right: 12.0,
+              top: 16.0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 4.0,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: Colors.white.withOpacity(0.82),
+                  border: Border.all(
+                    color: AppColors.textPrimary.withOpacity(0.08),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.file_download_sharp,
+                      size: 18.0,
+                      color: AppColors.textPrimary,
+                    ),
+                    const SizedBox(width: 4.0),
+                    Text(
+                      'try_own_photo'.translate(),
+                      style: AppTextStyles.labelExtraSmall.copyWith(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 16.0),
         Padding(
@@ -117,6 +163,7 @@ class PostWidget extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 36.0),
       ],
     );
   }

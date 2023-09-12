@@ -22,7 +22,7 @@ class CustomSegmentedPicker<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(
         color: AppColors.boxColor,
         borderRadius: BorderRadius.circular(12.0),

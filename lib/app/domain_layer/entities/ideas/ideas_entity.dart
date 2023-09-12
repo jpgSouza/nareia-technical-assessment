@@ -9,11 +9,14 @@ class IdeasEntity {
 
   final String description;
 
+  final bool verified;
+
   IdeasEntity({
     required this.highLightText,
     required this.userNickname,
     required this.userImage,
     required this.imageUrl,
     required this.description,
+    required this.verified,
   });
 }

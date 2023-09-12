@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class UserAvatar extends StatelessWidget {
@@ -10,22 +11,22 @@ class UserAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 45.0,
-      height: 45.0,
+      width: 40.0,
+      height: 40.0,
       child: CustomPaint(
-        size: const Size(45.0, 45.0),
+        size: const Size(40.0, 40.0),
         painter: CircularPaint(
           progressValue: 1,
         ),
         child: Center(
-          child: Container(
-            margin: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
+          child: Padding(
+            padding: const EdgeInsets.all(3.5),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: CachedNetworkImage(
                 fit: BoxFit.cover,
-                image: Image.network(userImage).image,
+                imageUrl: userImage,
               ),
-              shape: BoxShape.circle,
             ),
           ),
         ),
