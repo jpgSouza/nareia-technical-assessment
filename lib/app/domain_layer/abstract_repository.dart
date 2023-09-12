@@ -1,0 +1,1 @@
+library abstract_repository;
