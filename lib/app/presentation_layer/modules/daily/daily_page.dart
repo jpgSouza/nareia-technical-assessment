@@ -29,6 +29,13 @@ class _DailyPageState extends State<DailyPage>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _cubit.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     super.build(context);
 
