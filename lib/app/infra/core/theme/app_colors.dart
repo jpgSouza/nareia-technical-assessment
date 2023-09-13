@@ -16,4 +16,16 @@ abstract class AppColors {
   static const cottonCandyPink = Color(0xFFE65EE7);
 
   static const roseQuartz = Color(0xFFF0888F);
+
+  static const silverMist = Color(0xFFF6F6F6);
+
+  static const cerulanSpark = Color(0xFF458EFF);
+
+  static const goldenZest = Color(0xFFF9CE34);
+
+  static const fuchsiaFlare = Color(0xFFEE2A7B);
+
+  static const royalRadiance = Color(0xFF6228D7);
+
+  static const pearlWhite = Color(0xFFF2F2F2);
 }

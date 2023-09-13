@@ -57,7 +57,7 @@ class PostWidget extends StatelessWidget {
               const Icon(
                 Icons.verified,
                 size: 18.0,
-                color: Color(0xFF458eff),
+                color: AppColors.cerulanSpark,
               ),
             ],
           ],

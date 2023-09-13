@@ -1,5 +1,6 @@
 library core;
 
+export 'core/components/custom_error.dart';
 export 'core/components/custom_fab.dart';
 export 'core/components/custom_pull_to_refresh.dart';
 export 'core/components/custom_segmented_picker.dart';

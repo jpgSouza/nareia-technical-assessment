@@ -130,7 +130,7 @@ class _IdeasPageState extends State<IdeasPage> {
           border: Border(
             top: BorderSide(
               width: 1.0,
-              color: Color(0xFFF2F2F2),
+              color: AppColors.pearlWhite,
             ),
           ),
         ),

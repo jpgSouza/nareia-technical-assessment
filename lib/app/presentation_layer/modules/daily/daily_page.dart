@@ -59,25 +59,31 @@ class _DailyPageState extends State<DailyPage>
             BlocBuilder<DailyCubit, DailyState>(
               bloc: _cubit,
               builder: (_, event) {
-                final loading = event.state is LoadingState;
+                switch (event.state) {
+                  case LoadingState():
+                    return const PostShimmerWidget();
 
-                if (loading) {
-                  return const PostShimmerWidget();
-                }
-
-                return ListView.builder(
-                  primary: false,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: event.ideas.length,
-                  itemBuilder: (_, index) {
-                    final idea = event.ideas[index];
-
-                    return PostWidget(
-                      ideas: idea,
+                  case FailureState failure:
+                    return CustomError(
+                      errorMessage: failure.message,
+                      onRetry: _cubit.getDailyIdeas,
                     );
-                  },
-                );
+
+                  default:
+                    return ListView.builder(
+                      primary: false,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: event.ideas.length,
+                      itemBuilder: (_, index) {
+                        final idea = event.ideas[index];
+
+                        return PostWidget(
+                          ideas: idea,
+                        );
+                      },
+                    );
+                }
               },
             ),
           ],

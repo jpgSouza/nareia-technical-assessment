@@ -3,6 +3,8 @@ import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../infra/infra.dart';
+
 class UserAvatar extends StatelessWidget {
   final String userImage;
 
@@ -79,9 +81,9 @@ class CircularPaint extends CustomPainter {
           1.35,
         ],
         colors: [
-          Color(0xFFf9ce34),
-          Color(0xFFee2a7b),
-          Color(0xFF6228d7),
+          AppColors.goldenZest,
+          AppColors.fuchsiaFlare,
+          AppColors.royalRadiance,
         ],
       ).createShader(rect);
     canvas.drawArc(

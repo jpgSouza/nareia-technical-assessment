@@ -12,13 +12,24 @@ class DailyCubit extends Cubit<DailyState> {
   Future<void> getDailyIdeas() async {
     emit(state.copyWith(state: const LoadingState()));
 
-    final ideas = await _getDailyIdeasUseCase();
+    final result = await _getDailyIdeasUseCase();
 
-    emit(
-      state.copyWith(
-        state: const SuccessState(),
-        ideas: ideas,
-      ),
+    result.fold(
+      (errorMessage) {
+        emit(
+          state.copyWith(
+            state: FailureState(errorMessage),
+          ),
+        );
+      },
+      (ideas) {
+        emit(
+          state.copyWith(
+            state: const SuccessState(),
+            ideas: ideas,
+          ),
+        );
+      },
     );
   }
 }

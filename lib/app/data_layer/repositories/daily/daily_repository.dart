@@ -1,3 +1,5 @@
+import 'package:either_dart/either.dart';
+
 import '../../../domain_layer/domain_layer.dart';
 import '../../data_layer.dart';
 
@@ -9,7 +11,7 @@ class DailyRepository implements DailyRepositoryInterface {
   }) : _dataSource = dataSource;
 
   @override
-  Future<List<IdeasEntity>> getDailyIdeas() {
+  Future<Either<String, List<IdeasEntity>>> getDailyIdeas() {
     return _dataSource.getIdeas();
   }
 }

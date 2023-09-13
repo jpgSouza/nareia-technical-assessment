@@ -1,3 +1,5 @@
+import 'package:either_dart/either.dart';
+
 import '../../domain_layer.dart';
 
 class GetDailyIdeasUseCase {
@@ -7,7 +9,7 @@ class GetDailyIdeasUseCase {
     required DailyRepositoryInterface repository,
   }) : _repository = repository;
 
-  Future<List<IdeasEntity>> call() {
+  Future<Either<String, List<IdeasEntity>>> call() {
     return _repository.getDailyIdeas();
   }
 }

@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Slidy',
+      title: 'Nareia Technical Assessment',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
@@ -23,6 +23,8 @@ class AppWidget extends StatelessWidget {
       ],
       supportedLocales: const [
         Locale('pt', 'BR'),
+        Locale('en', 'US'),
+        Locale('es'),
       ],
     );
   }
